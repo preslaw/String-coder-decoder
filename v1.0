@@ -1,0 +1,42 @@
+import random
+
+def text_input():
+  global text
+  text = input ('Please enter the text')
+  return text
+
+def coder(text):
+  coded =[]
+  for a in text:
+    if a not in symbols_dict.values():
+      coded.append(a)  
+    else:
+      coded.append(symbols_dict[a])
+  print ('coded ',''.join(coded))
+  text = ''.join(coded)
+    
+  decoded = []
+  for a in text:
+    if a not in symbols_dict_decode.values():
+      decoded.append(a)  
+    else:
+      decoded.append(symbols_dict_decode[a])
+  print ('decoded ',''.join(decoded))
+  
+def symbols_dict_creator():
+  symbols = list('AĄBCĆDEĘFGHIJKLŁMNOÓPQRSŚTUVWXYZŹŻaąbcćdeęfghijklłmnoópqrsśtuvwxyzźż')
+  symbols_values = list('AĄBCĆDEĘFGHIJKLŁMNOÓPQRSŚTUVWXYZŹŻaąbcćdeęfghijklłmnoópqrsśtuvwxyzźż')
+  global symbols_dict
+  symbols_dict ={}
+  for a in symbols:
+    symbols_dict[a] =symbols_values.pop(random.randint(0,len(symbols_values)-1))
+  global symbols_dict_decode
+  symbols_dict_decode = {}
+  for a in symbols_dict:
+    symbols_dict_decode[symbols_dict[a]] = a
+  dictionaries = [symbols_dict,symbols_dict_decode]
+  return dictionaries
+  
+dictionaries =symbols_dict_creator()
+text_input()
+coder(text)
