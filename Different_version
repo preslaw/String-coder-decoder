@@ -1,0 +1,36 @@
+import random
+def coder(tekst,codeTable):
+  coded =''
+  for a in tekst:
+    if a not in codeTable:
+      coded +=a
+    else:
+      coded +=codeTable[a]
+  print(coded)
+  return coded
+
+znaki ='abcdefghijklmnopqrstuwvxyzABCDEFGHIJKLMNOPQRSTUWVXYZ'
+znaki = list(znaki)
+koding = []
+dekoding = []
+
+for a in znaki[:]:
+  wylosowana= random.choice(znaki)
+  koding +=[[a,wylosowana]]
+  znaki.remove(wylosowana)
+
+for a in koding:
+  dekoding+=[[a[1],a[0]]]
+  
+koding = dict(koding)
+dekoding = dict(dekoding)
+
+
+tekst = 'Marcin'
+zakodowane =coder(tekst, koding)
+odkodowane = coder(zakodowane,dekoding)
+
+
+
+
+
